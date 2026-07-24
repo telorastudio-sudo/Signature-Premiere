@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signature Premier Events | Canada's Premier Mallu Events & Entertainment Community</title>
+  <meta name="description" content="Signature Premier Events is Canada's premier event management and entertainment community — producing concerts, cultural festivals, dance competitions, award nights, and community celebrations for the Malayali diaspora across Canada.">
+  <meta name="keywords" content="Mallu events Canada, Malayali events, Signature Premier Events, Malayalee community Canada, cultural events, dance competition, music concert, Onam celebrations, mallu community">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23030305'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='20' font-family='Arial' font-weight='bold' fill='%23ffd700'%3ES%3C/text%3E%3C/svg%3E">
+
+  <!-- Premium Fonts: Syne & Inter + Malayalam compatible -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- MUSIC NOTES FLOATING PARTICLES -->
+  <div class="particle-container" id="particleContainer"></div>
+
+  <!-- OPTIMIZED AMBIENT AURORA BACKGROUND -->
+  <div class="aurora-container">
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="aurora aurora-3"></div>
+    <div class="aurora aurora-4"></div>
+  </div>
+
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <a href="#" class="logo-link">
+      <img src="images/logo.png" alt="Signature Events Logo" class="brand-logo" id="navLogo">
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#about" class="hover-underline">About</a></li>
+      <li><a href="#events" class="hover-underline">Events</a></li>
+      <li><a href="#services" class="hover-underline">Experiences</a></li>
+      <li><a href="#gallery" class="hover-underline">Gallery</a></li>
+      <li><a href="#community" class="hover-underline">Community</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="btn btn-glass" onclick="openModal('Get In Touch', 'General Enquiry')">
+        <i class="fa-solid fa-handshake"></i> Connect
+      </button>
+      <div class="menu-toggle" onclick="toggleMenu()" aria-label="Open Menu" role="button" tabindex="0"><i class="fa-solid fa-bars"></i></div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-close" onclick="toggleMenu()" aria-label="Close Menu" role="button" tabindex="0"><i class="fa-solid fa-xmark"></i></div>
+    <ul>
+      <li><a href="#about" onclick="toggleMenu()">About</a></li>
+      <li><a href="#events" onclick="toggleMenu()">Events</a></li>
+      <li><a href="#services" onclick="toggleMenu()">Experiences</a></li>
+      <li><a href="#artists" onclick="toggleMenu()">Artists</a></li>
+      <li><a href="#gallery" onclick="toggleMenu()">Gallery</a></li>
+      <li><a href="#community" onclick="toggleMenu()">Community</a></li>
+    </ul>
+    <div class="culture-tag">Rooted in Tradition — Thriving in Canada</div>
+  </div>
+
+  <!-- ==================== HERO ==================== -->
+  <header class="hero" id="hero">
+    <div class="hero-overlay-pattern"></div>
+    <div class="hero-content reveal">
+      <div class="tagline glass-pill">
+        <span class="pulse-dot"></span> Canada's Premier Mallu Events & Entertainment Community
+      </div>
+      <h1 class="hero-title">
+        WHERE CULTURE <br> MEETS <span class="text-gradient">CELEBRATION.</span>
+      </h1>
+      <p class="hero-desc">Signature Premier Events is Canada's premier event management and entertainment community — bringing the best of Malayali music, dance, cultural festivals, concert nights, and community celebrations to audiences across the country.</p>
+
+      <div class="hero-btn-group">
+        <a href="#events" class="btn btn-primary">Explore Lineup <i class="fa-solid fa-arrow-right"></i></a>
+        <button class="btn btn-glass" onclick="openModal('Artist Registration', 'Auditions')"><i class="fa-solid fa-microphone"></i> Perform With Us</button>
+      </div>
+
+      <div class="hero-social-strip">
+        <span>Follow the beat</span>
+        <div class="social-strip-links">
+          <a href="#" class="glass-icon-sm" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="glass-icon-sm" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" class="glass-icon-sm" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="glass-icon-sm" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== INFINITE MARQUEE ==================== -->
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span>✦ SIGNATURE PREMIER EVENTS</span>
+        <span>✦ CONCERTS · DANCE · CULTURAL FESTIVALS</span>
+        <span>✦ MALAYALI COMMUNITY · CANADA</span>
+        <span>✦ YOUR EVENT. OUR PASSION.</span>
+        <span>✦ TORONTO · VANCOUVER · MONTREAL · CALGARY</span>
+        <span>✦ MALAYALI COMMUNITY · CANADA</span>
+        <span>✦ YOUR EVENT. OUR PASSION.</span>
+        <!-- Duplicate for seamless loop -->
+        <span>✦ SIGNATURE PREMIER EVENTS</span>
+        <span>✦ CONCERTS · DANCE · CULTURAL FESTIVALS</span>
+        <span>✦ MALAYALI COMMUNITY · CANADA</span>
+        <span>✦ YOUR EVENT. OUR PASSION.</span>
+        <span>✦ TORONTO · VANCOUVER · MONTREAL · CALGARY</span>
+        <span>✦ MALAYALI COMMUNITY · CANADA</span>
+        <span>✦ YOUR EVENT. OUR PASSION.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section class="services-section" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="title-outline">ABOUT</h2>
+        <h3 class="title-main">About Signature Premier Events</h3>
+        <p class="subtitle">Building Canada's most vibrant Mallu events community — from coast to coast.</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-box box-wide reveal glass-panel">
+          <div class="bento-flex">
+            <div class="bento-text-block">
+              <p>Signature Premier Events is <strong>Canada's premier event management and entertainment community</strong>, dedicated to creating exceptional experiences for the Malayali diaspora across the country. We specialize in organizing concerts, stage shows, award nights, cultural festivals, dance competitions, and community celebrations in Toronto, Vancouver, Montreal, Calgary, and beyond.</p>
+              <p>From concept to execution, our team delivers high-quality event planning, production, artist management, sponsorship coordination, and audience engagement — bringing together the best of Malayali culture, music, dance, and entertainment under one roof.</p>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('Contact Us', 'About Enquiry')">Get In Touch <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <div class="bento-box box-small reveal glass-panel hover-glow">
+          <div class="bento-icon-wrap"><i class="fa-solid fa-map-location-dot bento-icon text-gold"></i></div>
+          <h3>Culture Rooted</h3>
+          <p>Proudly serving the Malayali diaspora across Canada with authentic cultural programming and events.</p>
+        </div>
+
+        <div class="bento-box box-small reveal glass-panel hover-glow">
+          <div class="bento-icon-wrap"><i class="fa-solid fa-hands-praying bento-icon text-cyan"></i></div>
+          <h3>Culture First</h3>
+          <p>Celebrating Malayali heritage through world-class events, performances, and community gatherings across Canada.</p>
+        </div>
+
+        <div class="bento-box box-small reveal glass-panel hover-glow">
+          <div class="bento-icon-wrap"><i class="fa-solid fa-people-arrows bento-icon text-pink"></i></div>
+          <h3>Community Built</h3>
+          <p>Founded by Mallus, for Mallus — creating spaces where the community connects, celebrates, and thrives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== NEXT EVENT COUNTDOWN ==================== -->
+  <section class="countdown-section" id="countdown">
+    <div class="container">
+      <div class="countdown-wrapper reveal">
+        <div class="countdown-label">
+          <span class="pulse-dot"></span> Next Big Event
+        </div>
+        <h3 class="countdown-title">Mallu Iconic Night</h3>
+        <p class="countdown-venue"><i class="fa-solid fa-location-dot"></i> Evario Events Centre, 950 Parsons RD SW, Edmonton, AB T6X 0J4</p>
+        
+        <div class="countdown-timer" id="countdownTimer">
+          <div class="countdown-item">
+            <span class="countdown-number" id="countdownDays">00</span>
+            <span class="countdown-label-text">Days</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="countdownHours">00</span>
+            <span class="countdown-label-text">Hours</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="countdownMinutes">00</span>
+            <span class="countdown-label-text">Mins</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="countdownSeconds">00</span>
+            <span class="countdown-label-text">Secs</span>
+          </div>
+        </div>
+
+        <div class="countdown-actions">
+          <button class="btn btn-primary" onclick="openModal('Mallu Melodies Night', 'Tickets')"><i class="fa-solid fa-ticket"></i> Book Tickets</button>
+          <button class="btn btn-glass" onclick="openPosterModal()">
+  <i class="fa-solid fa-eye"></i> View Poster
+</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== UPCOMING EVENTS ==================== -->
+  <section class="events-section" id="events">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="title-outline">EVENTS</h2>
+        <h3 class="title-main">The Lineup</h3>
+        <p class="subtitle">Discover the best of Mallu music, dance, and culture across Canada</p>
+      </div>
+
+      <div class="filter-wrapper reveal">
+        <button class="filter-btn active" onclick="filterEvents('all', this)">All Events</button>
+        <button class="filter-btn" onclick="filterEvents('music', this)">Live Concerts</button>
+        <button class="filter-btn" onclick="filterEvents('dance', this)">Dance Competitions</button>
+        <button class="filter-btn" onclick="filterEvents('festival', this)">Cultural Festivals</button>
+        <button class="filter-btn" onclick="filterEvents('corporate', this)">Award Nights</button>
+      </div>
+
+      <div class="events-grid">
+        <!-- Event 1: Mallu Music Concert -->
+        <div class="event-card reveal" data-category="music">
+          <div class="event-image">
+            <img src="./images/WhatsApp Image 2026-07-21 at 15.56.56.jpeg" alt="Live music concert with stage lights" loading="lazy" onerror="handleImgError(this)">
+            <div class="img-fallback"><i class="fa-solid fa-music"></i></div>
+            <div class="event-badge bg-cyan">CONCERT NIGHT</div>
+            <div class="event-image-overlay">
+              <button class="btn-icon-sm" onclick="openModal('Mallu Iconic Night', 'Tickets')"><i class="fa-solid fa-ticket"></i> Book</button>
+            </div>
+          </div>
+          <div class="event-info glass-panel">
+            <div class="event-date">MAR <span>7</span></div>
+            <div class="event-details">
+              <h4>Mallu Iconic Night</h4>
+              <p><i class="fa-solid fa-location-dot"></i> Evario Events Centre, 950 Parsons RD SW, Edmonton, AB T6X 0J4</p>
+            </div>
+            <button class="btn-icon" onclick="openModal('Mallu Melodies Night', 'Tickets')" aria-label="Get Tickets"><i class="fa-solid fa-ticket"></i></button>
+          </div>
+        </div>
+
+<!--        
+        <div class="event-card reveal" data-category="dance">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=800&q=80" alt="Dance competition performance" loading="lazy" onerror="handleImgError(this)">
+            <div class="img-fallback"><i class="fa-solid fa-people-group"></i></div>
+            <div class="event-badge bg-pink">DANCE COMPETITION</div>
+            <div class="event-image-overlay">
+              <button class="btn-icon-sm" onclick="openModal('Mallu Dance Showdown', 'Tickets')"><i class="fa-solid fa-ticket"></i> Book</button>
+            </div>
+          </div>
+          <div class="event-info glass-panel">
+            <div class="event-date">SEP <span>02</span></div>
+            <div class="event-details">
+              <h4>Mallu Dance Showdown</h4>
+              <p><i class="fa-solid fa-location-dot"></i> Living Arts Centre, Mississauga, ON</p>
+            </div>
+            <button class="btn-icon" onclick="openModal('Mallu Dance Showdown', 'Tickets')" aria-label="Get Tickets"><i class="fa-solid fa-ticket"></i></button>
+          </div>
+        </div>
+
+        
+        <div class="event-card reveal" data-category="festival">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="Cultural festival with live performance" loading="lazy" onerror="handleImgError(this)">
+            <div class="img-fallback"><i class="fa-solid fa-flag"></i></div>
+            <div class="event-badge bg-gold">CULTURAL FESTIVAL</div>
+            <div class="event-image-overlay">
+              <button class="btn-icon-sm" onclick="openModal('Onam Celebrations 2026', 'Tickets')"><i class="fa-solid fa-ticket"></i> Book</button>
+            </div>
+          </div>
+          <div class="event-info glass-panel">
+            <div class="event-date">SEP <span>12</span></div>
+            <div class="event-details">
+              <h4>Onam Celebrations 2026</h4>
+              <p><i class="fa-solid fa-location-dot"></i> Nathan Phillips Square, Toronto, ON</p>
+            </div>
+            <button class="btn-icon" onclick="openModal('Onam Celebrations 2026', 'Tickets')" aria-label="Get Tickets"><i class="fa-solid fa-ticket"></i></button>
+          </div>
+        </div>
+
+       
+        <div class="event-card reveal" data-category="corporate">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" alt="Award ceremony gala event" loading="lazy" onerror="handleImgError(this)">
+            <div class="img-fallback"><i class="fa-solid fa-trophy"></i></div>
+            <div class="event-badge bg-purple">AWARD NIGHT</div>
+            <div class="event-image-overlay">
+              <button class="btn-icon-sm" onclick="openModal('Malayalam Music Awards', 'Tickets')"><i class="fa-solid fa-ticket"></i> Book</button>
+            </div>
+          </div>
+          <div class="event-info glass-panel">
+            <div class="event-date">NOV <span>08</span></div>
+            <div class="event-details">
+              <h4>Malayalam Music Awards</h4>
+              <p><i class="fa-solid fa-location-dot"></i> Rose Theatre, Brampton, ON</p>
+            </div>
+            <button class="btn-icon" onclick="openModal('Malayalam Music Awards', 'Tickets')" aria-label="Get Tickets"><i class="fa-solid fa-ticket"></i></button>
+          </div>
+        </div>
+
+       
+        <div class="event-card reveal" data-category="music">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80" alt="Concert night with crowd" loading="lazy" onerror="handleImgError(this)">
+            <div class="img-fallback"><i class="fa-solid fa-headphones"></i></div>
+            <div class="event-badge bg-cyan">CONCERT NIGHT</div>
+            <div class="event-image-overlay">
+              <button class="btn-icon-sm" onclick="openModal('Vancouver Music Fest', 'Tickets')"><i class="fa-solid fa-ticket"></i> Book</button>
+            </div>
+          </div>
+          <div class="event-info glass-panel">
+            <div class="event-date">DEC <span>06</span></div>
+            <div class="event-details">
+              <h4>Vancouver Music Fest</h4>
+              <p><i class="fa-solid fa-location-dot"></i> Orpheum Theatre, Vancouver, BC</p>
+            </div>
+            <button class="btn-icon" onclick="openModal('Vancouver Music Fest', 'Tickets')" aria-label="Get Tickets"><i class="fa-solid fa-ticket"></i></button>
+          </div>
+        </div>
+
+      
+        <div class="event-card reveal" data-category="festival">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=800&q=80" alt="Festival with colorful lights" loading="lazy" onerror="handleImgError(this)">
+            <div class="img-fallback"><i class="fa-solid fa-feather"></i></div>
+            <div class="event-badge bg-gold">VISHU CELEBRATIONS</div>
+            <div class="event-image-overlay">
+              <button class="btn-icon-sm" onclick="openModal('Vishu Festival 2027', 'Tickets')"><i class="fa-solid fa-ticket"></i> Book</button>
+            </div>
+          </div>
+          <div class="event-info glass-panel">
+            <div class="event-date">APR <span>14</span></div>
+            <div class="event-details">
+              <h4>Vishu Celebrations 2027</h4>
+              <p><i class="fa-solid fa-location-dot"></i> Palais des congrès, Montreal, QC</p>
+            </div>
+            <button class="btn-icon" onclick="openModal('Vishu Celebrations 2027', 'Tickets')" aria-label="Get Tickets"><i class="fa-solid fa-ticket"></i></button>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SERVICES / EXPERTISE ==================== -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="title-outline">EXPERIENCES</h2>
+        <h3 class="title-main">What We Craft</h3>
+        <p class="subtitle">End-to-end event production tailored for the Malayali community</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-box box-large reveal glass-panel hover-glow service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=800&q=80');">
+          <div class="bento-icon-wrap"><i class="fa-solid fa-compact-disc bento-icon text-cyan"></i></div>
+          <h3>Concerts & Live Music</h3>
+          <p>Showcasing Malayali artists with cutting-edge production, sound, and staging for audiences across Canada.</p>
+        </div>
+
+        <div class="bento-box box-small reveal glass-panel hover-glow service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=800&q=80');">
+          <div class="bento-icon-wrap"><i class="fa-solid fa-person-dancing bento-icon text-pink"></i></div>
+          <h3>Dance Competitions</h3>
+          <p>Judged showcases and battles spotlighting rising dancers from the community.</p>
+        </div>
+
+        <div class="bento-box box-small reveal glass-panel hover-glow service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80');">
+          <div class="bento-icon-wrap"><i class="fa-solid fa-flag bento-icon text-gold"></i></div>
+          <h3>Cultural Festivals</h3>
+          <p>Onam, Vishu, and other celebrations of Malayali heritage and traditions.</p>
+        </div>
+
+        <div class="bento-box box-small reveal glass-panel hover-glow">
+          <div class="bento-icon-wrap"><i class="fa-solid fa-masks-theater bento-icon text-cyan"></i></div>
+          <h3>Stage Shows</h3>
+          <p>Theatrical performances and cultural showcases that entertain and inspire.</p>
+        </div>
+
+        <div class="bento-box box-small reveal glass-panel hover-glow service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80');">
+          <div class="bento-icon-wrap"><i class="fa-solid fa-briefcase bento-icon text-pink"></i></div>
+          <h3>Corporate Events</h3>
+          <p>Business events, galas, and private celebrations designed for impact.</p>
+        </div>
+
+        <div class="bento-box box-wide reveal glass-panel hover-glow" style="background: linear-gradient(135deg, rgba(20,20,30,0.8), rgba(255,215,0,0.08)); border: 1px solid rgba(255,215,0,0.15);">
+          <div class="bento-flex">
+            <div class="bento-text-block">
+              <h3>End-to-End Event Production</h3>
+              <p>Event planning &amp; production, artist management, sponsorship coordination, ticketing, and marketing — we handle every detail of your Mallu cultural event so it lands flawlessly, start to finish.</p>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('Hire Us', 'Event Curation')">Partner With Us</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ARTIST SPOTLIGHT ==================== -->
+  
+
+  <!-- ==================== STATS BANNER ==================== -->
+  <section class="stats-banner">
+    <div class="container stats-flex reveal">
+      <div class="stat-item">
+        <h4 class="counter text-gradient" data-target="50">0</h4>
+        <p>Flagship Events</p>
+      </div>
+      <div class="stat-item">
+        <h4 class="counter text-gradient" data-target="75">0</h4>
+        <p>Artists Featured</p>
+      </div>
+      <div class="stat-item">
+        <h4 class="counter text-gradient" data-target="30">0</h4>
+        <p>Canadian Cities</p>
+      </div>
+      <div class="stat-item">
+        <h4 class="counter text-gradient" data-target="25">0</h4>
+        <p>Cultural Fests</p>
+      </div>
+      <div class="stat-item">
+        <h4 class="counter text-gradient" data-target="4.9">0</h4>
+        <p>Community Rating</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== GALLERY ==================== -->
+  <section class="events-section" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="title-outline">GALLERY</h2>
+        <h3 class="title-main">Moments</h3>
+        <p class="subtitle">Relive the magic from our past events across Canada</p>
+      </div>
+
+      <div class="masonry-gallery reveal" id="masonryGallery">
+        <div class="gallery-item" onclick="openLightbox(0)" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); openLightbox(0); }" role="button" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" alt="Event crowd with stage lights" loading="lazy" onerror="this.style.display='none'">
+          <div class="gallery-overlay">
+            <i class="fa-solid fa-expand"></i>
+            <span>Concert Night</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(1)" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); openLightbox(1); }" role="button" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=80" alt="Live concert performance" loading="lazy" onerror="this.style.display='none'">
+          <div class="gallery-overlay">
+            <i class="fa-solid fa-expand"></i>
+            <span>Live Performance</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(2)" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); openLightbox(2); }" role="button" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" alt="Festival celebration with crowd" loading="lazy" onerror="this.style.display='none'">
+          <div class="gallery-overlay">
+            <i class="fa-solid fa-expand"></i>
+            <span>Cultural Festival</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(3)" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); openLightbox(3); }" role="button" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80" alt="Concert crowd with hands up" loading="lazy" onerror="this.style.display='none'">
+          <div class="gallery-overlay">
+            <i class="fa-solid fa-expand"></i>
+            <span>Concert Crowd</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(4)" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); openLightbox(4); }" role="button" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=800&q=80" alt="Stage performance with lights" loading="lazy" onerror="this.style.display='none'">
+          <div class="gallery-overlay">
+            <i class="fa-solid fa-expand"></i>
+            <span>Stage Show</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(5)" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); openLightbox(5); }" role="button" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=800&q=80" alt="Festival night with lights" loading="lazy" onerror="this.style.display='none'">
+          <div class="gallery-overlay">
+            <i class="fa-solid fa-expand"></i>
+            <span>Festival Night</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="text-center reveal" style="margin-top: 2rem;">
+        <button class="btn btn-glass" onclick="openModal('Media Request', 'Gallery')"><i class="fa-solid fa-images"></i> Request Full Photo Archive</button>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- ==================== LIGHTBOX ==================== -->
+  <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+    <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="lightbox-content">
+      <img id="lightboxImage" src="" alt="Gallery image">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <!-- ==================== PAST EVENTS / LEGACY ==================== -->
+  <section class="events-section" id="legacy">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="title-outline">LEGACY</h2>
+        <h3 class="title-main">Past Events</h3>
+        <p class="subtitle">A look back at the unforgettable moments we've created</p>
+      </div>
+
+      <div class="events-grid">
+        <div class="event-card reveal" data-category="music">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=800&q=80" alt="Past concert event" loading="lazy" onerror="handleImgError(this)">
+            <div class="img-fallback"><i class="fa-solid fa-image"></i></div>
+            <div class="event-badge bg-cyan">SOLD OUT</div>
+            <div class="event-image-overlay">
+              <button class="btn-icon-sm" onclick="openModal('Mallu Beats 2025', 'Recap')"><i class="fa-solid fa-play"></i> Recap</button>
+            </div>
+          </div>
+          <div class="event-info glass-panel">
+            <div class="event-date">MAR <span>22</span></div>
+            <div class="event-details">
+              <h4>Mallu Beats 2025</h4>
+              <p><i class="fa-solid fa-location-dot"></i> Toronto Convention Centre, Toronto, ON</p>
+            </div>
+            <button class="btn-icon" onclick="openModal('Mallu Beats 2025', 'Recap')" aria-label="View Recap"><i class="fa-solid fa-play"></i></button>
+          </div>
+        </div>
+
+        <div class="event-card reveal" data-category="corporate">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" alt="Past award night" loading="lazy" onerror="handleImgError(this)">
+            <div class="img-fallback"><i class="fa-solid fa-image"></i></div>
+            <div class="event-badge bg-purple">RECAP</div>
+            <div class="event-image-overlay">
+              <button class="btn-icon-sm" onclick="openModal('Excellence Awards Gala', 'Recap')"><i class="fa-solid fa-play"></i> Recap</button>
+            </div>
+          </div>
+          <div class="event-info glass-panel">
+            <div class="event-date">DEC <span>09</span></div>
+            <div class="event-details">
+              <h4>Excellence Awards Gala</h4>
+              <p><i class="fa-solid fa-location-dot"></i> Sheraton Centre, Toronto, ON</p>
+            </div>
+            <button class="btn-icon" onclick="openModal('Excellence Awards Gala', 'Recap')" aria-label="View Recap"><i class="fa-solid fa-play"></i></button>
+          </div>
+        </div>
+
+        <div class="event-card reveal" data-category="dance">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=800&q=80" alt="Past dance competition" loading="lazy" onerror="handleImgError(this)">
+            <div class="img-fallback"><i class="fa-solid fa-image"></i></div>
+            <div class="event-badge bg-pink">RECAP</div>
+            <div class="event-image-overlay">
+              <button class="btn-icon-sm" onclick="openModal('Dance Cup 2025', 'Recap')"><i class="fa-solid fa-play"></i> Recap</button>
+            </div>
+          </div>
+          <div class="event-info glass-panel">
+            <div class="event-date">JUL <span>13</span></div>
+            <div class="event-details">
+              <h4>Dance Cup 2025</h4>
+              <p><i class="fa-solid fa-location-dot"></i> Living Arts Centre, Mississauga, ON</p>
+            </div>
+            <button class="btn-icon" onclick="openModal('Dance Cup 2025', 'Recap')" aria-label="View Recap"><i class="fa-solid fa-play"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TESTIMONIALS ==================== -->
+  <!-- <section class="testimonials-section" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="title-outline">VOICES</h2>
+        <h3 class="title-main">Community Voices</h3>
+        <p class="subtitle">What our Mallu community says about us</p>
+      </div>
+
+      <div class="testimonial-carousel reveal" id="testimonialCarousel">
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial-card glass-panel">
+            <div class="testimonial-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-text">"Signature Premier Events brought the best of Malayali music to Toronto! The production quality was world-class, and the energy was incredible. Can't wait for the next one!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, var(--color-cyan), var(--color-purple));">
+                <span>AR</span>
+              </div>
+              <div>
+                <strong>Akhil Rajesh</strong>
+                <span>Toronto, ON</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-panel">
+            <div class="testimonial-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-text">"As a dancer from Mississauga, getting a platform like Mallu Dance Showdown was a dream come true. The team truly cares about nurturing local talent. Absolutely amazing experience!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, var(--color-pink), var(--color-purple));">
+                <span>SN</span>
+              </div>
+              <div>
+                <strong>Sruthi Nair</strong>
+                <span>Mississauga, ON</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-panel">
+            <div class="testimonial-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-text">"The Onam celebrations organized by Signature were nothing short of spectacular. From the traditional performances to the grand feast — it felt like home away from home!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, var(--color-gold), var(--color-pink));">
+                <span>PM</span>
+              </div>
+              <div>
+                <strong>Priya Menon</strong>
+                <span>Vancouver, BC</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-panel">
+            <div class="testimonial-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-text">"Performing at the Malayalam Music Awards was an honor. The team's professionalism and passion for promoting Malayali artists is truly inspiring. Canada's music scene is in great hands!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, var(--color-cyan), var(--color-gold));">
+                <span>JK</span>
+              </div>
+              <div>
+                <strong>Jobin Kuriakose</strong>
+                <span>Montreal, QC</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-dots" id="testimonialDots"></div>
+    </div>
+  </section> -->
+
+  <!-- ==================== SPONSORS & PARTNERS ==================== -->
+  <section class="sponsors-section" id="sponsors">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="title-outline">PARTNERS</h2>
+        <h3 class="title-main">Our Partners</h3>
+        <p class="subtitle">Trusted by leading brands across Canada</p>
+      </div>
+
+      <div class="sponsors-grid reveal">
+        <div class="sponsor-card glass-panel">
+          <div class="sponsor-placeholder"><i class="fa-solid fa-building"></i></div>
+          <span>Partner Brand</span>
+        </div>
+        <div class="sponsor-card glass-panel">
+          <div class="sponsor-placeholder"><i class="fa-solid fa-music"></i></div>
+          <span>Music Label</span>
+        </div>
+        <div class="sponsor-card glass-panel">
+          <div class="sponsor-placeholder"><i class="fa-solid fa-tv"></i></div>
+          <span>Media Partner</span>
+        </div>
+        <div class="sponsor-card glass-panel">
+          <div class="sponsor-placeholder"><i class="fa-solid fa-hotel"></i></div>
+          <span>Venue Partner</span>
+        </div>
+        <div class="sponsor-card glass-panel">
+          <div class="sponsor-placeholder"><i class="fa-solid fa-champagne-glasses"></i></div>
+          <span>Hospitality</span>
+        </div>
+        <div class="sponsor-card glass-panel">
+          <div class="sponsor-placeholder"><i class="fa-solid fa-radio"></i></div>
+          <span>Radio Partner</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== GET INVOLVED / COMMUNITY ==================== -->
+  <section class="auditions-section" id="community">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <h2 class="title-outline">COMMUNITY</h2>
+        <h3 class="title-main">Built on Community</h3>
+        <p class="subtitle">We're committed to bringing the Malayali community together through memorable events that celebrate culture, entertainment, and connection.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="join-card reveal glass-panel">
+          <div class="card-glow glow-cyan"></div>
+          <h4>Sponsors & Brands</h4>
+          <p>Partner with us for sponsorship and brand promotion opportunities across Canada's largest Mallu event portfolio.</p>
+          <button class="btn-text" onclick="openModal('Sponsorship Enquiry', 'Community')">Become a Sponsor <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+
+        <div class="join-card reveal glass-panel">
+          <div class="card-glow glow-gold"></div>
+          <h4>Community Organizations</h4>
+          <p>Host your Malayali cultural or community event with our full-service planning and production support.</p>
+          <button class="btn-text" onclick="openModal('Community Event Enquiry', 'Community')">Plan an Event <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+
+        <div class="join-card reveal glass-panel">
+          <div class="card-glow glow-purple"></div>
+          <h4>Venue Partnerships</h4>           <p>List your venue with us and become a preferred location for our most exciting cultural events.</p>
+          <button class="btn-text" onclick="openModal('Venue Partnership', 'Community')">Partner Now <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== OWN THE STAGE ==================== -->
+<!-- <section class="auditions-section" id="join-us">
+  <div class="container">
+    <div class="section-header text-center reveal">
+<h2 class="title-outline">JOIN US</h2>
+<h3 class="title-main">Looking for EMCEEs</h3>
+<p class="subtitle">
+  Become the voice of Signature Premier Events and host unforgettable experiences across Canada.
+</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <div class="join-card reveal glass-panel">
+        <div class="card-glow glow-gold"></div>
+        <h4>🎤 Looking for EMCEEs</h4>
+        <p>
+          We're currently looking for confident and energetic emcees to host our upcoming concerts, cultural programs, and live events across Canada.
+        </p>
+        <button class="btn-text" onclick="openModal('EMCEE Application', 'Join Our Team')">
+          Apply Now <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section> -->
+
+<section class="auditions-section" id="join-us">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <h2 class="title-outline">JOIN US</h2>
+      <h3 class="title-main">Looking for EMCEEs</h3>
+      <p class="subtitle">
+        Become the voice of Signature Premier Events and host unforgettable experiences across Canada.
+      </p>
+    </div>
+
+    <div class="emcee-wrapper reveal">
+
+      <div class="emcee-image">
+        <img src="./images/WhatsApp Image 2026-07-21 at 15.56.57.jpeg" alt="Looking for EMCEEs">
+      </div>
+
+      <div class="join-card glass-panel">
+        <div class="card-glow glow-gold"></div>
+
+        <h4>🎤 Join Our EMCEE Team</h4>
+
+        <p>
+          We're currently looking for confident and energetic emcees to host our
+          upcoming concerts, cultural programs, and live events across Canada.
+        </p>
+
+        <button class="btn-text"
+          onclick="openModal('EMCEE Application', 'Join Our Team')">
+          Apply Now <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+  <!-- ==================== LATEST NEWS / BLOG ==================== -->
+  <section class="events-section" id="news">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="title-outline">UPDATES</h2>
+        <h3 class="title-main">Latest Updates</h3>
+        <p class="subtitle">News, behind-the-scenes, and stories from the Mallu events community</p>
+      </div>
+
+      <div class="events-grid">
+        <div class="event-card reveal">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" alt="Behind the scenes at concert" loading="lazy" onerror="handleImgError(this)">
+            <div class="img-fallback"><i class="fa-solid fa-newspaper"></i></div>
+            <div class="event-badge bg-cyan">BEHIND THE SCENES</div>
+          </div>
+          <div class="event-info glass-panel">
+            <div class="event-date" style="color: var(--color-gray); font-size: 0.8rem;">JUL 15</div>
+            <div class="event-details">
+              <h4 style="font-size: 1rem;">How We Built the Stage for Mallu Melodies Night</h4>
+              <p style="font-size: 0.8rem;">A behind-the-scenes look at the production that brought our biggest concert to life.</p>
+            </div>
+            <button class="btn-icon" onclick="openModal('Read Article', 'News')" aria-label="Read More" style="width: 40px; height: 40px; font-size: 0.9rem;"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <div class="event-card reveal">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" alt="Audience at event" loading="lazy" onerror="handleImgError(this)">
+            <div class="img-fallback"><i class="fa-solid fa-newspaper"></i></div>
+            <div class="event-badge bg-purple">COMMUNITY SPOTLIGHT</div>
+          </div>
+          <div class="event-info glass-panel">
+            <div class="event-date" style="color: var(--color-gray); font-size: 0.8rem;">JUN 28</div>
+            <div class="event-details">
+              <h4 style="font-size: 1rem;">Meet the Rising Stars of the Mallu Dance Scene</h4>
+              <p style="font-size: 0.8rem;">We chat with the young dancers making waves at our competitions across the state.</p>
+            </div>
+            <button class="btn-icon" onclick="openModal('Read Article', 'News')" aria-label="Read More" style="width: 40px; height: 40px; font-size: 0.9rem;"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <div class="event-card reveal">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80" alt="Concert crowd" loading="lazy" onerror="handleImgError(this)">
+            <div class="img-fallback"><i class="fa-solid fa-newspaper"></i></div>
+            <div class="event-badge bg-gold">RECAP</div>
+          </div>
+          <div class="event-info glass-panel">
+            <div class="event-date" style="color: var(--color-gray); font-size: 0.8rem;">JUN 10</div>
+            <div class="event-details">
+              <h4 style="font-size: 1rem;">Onam 2025: Our Biggest Celebration Yet!</h4>               <p style="font-size: 0.8rem;">Highlights from the grand Onam celebrations that brought together thousands across Canada.</p>
+            </div>
+            <button class="btn-icon" onclick="openModal('Read Article', 'News')" aria-label="Read More" style="width: 40px; height: 40px; font-size: 0.9rem;"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== NEWSLETTER ==================== -->
+  <!-- <section class="newsletter-section" id="newsletter">
+    <div class="container">
+      <div class="newsletter-wrapper reveal">
+        <div class="newsletter-icon">
+          <i class="fa-solid fa-envelope-open-text"></i>
+        </div>
+        <h3>Stay in the Loop</h3>
+        <p>Get the latest updates on upcoming events, artist announcements, and exclusive offers delivered to your inbox.</p>
+        <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+          <div class="newsletter-input-group">
+            <input type="email" id="newsletterEmail" name="email" required placeholder="Enter your email address" autocomplete="email">
+            <button type="submit" class="btn btn-primary">Subscribe <i class="fa-solid fa-paper-plane"></i></button>
+          </div>
+        </form>
+        <p class="newsletter-disclaimer">No spam. Just the best of Mallu events. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- ==================== MODAL ==================== -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content glass-panel">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-header">
+        <h3 id="modalTitle">Register Interest</h3>
+        <p id="modalSub">Complete the form below to get started.</p>
+      </div>
+      <form onsubmit="handleFormSubmit(event)">
+        <div class="input-group">
+          <input type="text" id="name" name="name" required placeholder=" " autocomplete="name">
+          <label for="name">Full Name</label>
+        </div>
+        <div class="input-group">
+          <input type="email" id="email" name="email" required placeholder=" " autocomplete="email">
+          <label for="email">Email Address</label>
+        </div>
+        <div class="input-group">
+          <input type="tel" id="phone" name="phone" required placeholder=" " autocomplete="tel">
+          <label for="phone">Phone / WhatsApp</label>
+        </div>
+        <div class="input-group">
+          <textarea id="notes" name="notes" rows="3" placeholder=" " autocomplete="off"></textarea>
+          <label for="notes">Links / Portfolio / Notes</label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Submit Application <i class="fa-solid fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ==================== POSTER MODAL ==================== -->
+<div class="modal-overlay" id="posterModal">
+  <div class="modal-content glass-panel poster-modal-content">
+
+    <button class="modal-close" onclick="closePosterModal()" aria-label="Close Poster">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="modal-header">
+      <h3>Event Poster</h3>
+    </div>
+
+    <div class="poster-wrapper">
+      <img
+        src="./images/WhatsApp Image 2026-07-21 at 15.56.58.jpeg"
+        alt="Event Poster"
+        class="poster-image"
+      >
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- SCROLL TO TOP BUTTON -->
+  <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+     <a href="#" class="logo-link">
+      <img src="images/logo.png" alt="Signature Events Logo" class="brand-logo" id="navLogo">
+    </a>
+        <p>Canada's premier event management and entertainment community — creating exceptional experiences for the Malayali diaspora from concerts and cultural festivals to dance competitions and award nights from coast to coast.</p>
+        <div class="social-links">
+          <a href="#" class="glass-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="glass-icon" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" class="glass-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="glass-icon" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="glass-icon" aria-label="Spotify"><i class="fa-brands fa-spotify"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#events">Upcoming Events</a></li>
+          <li><a href="#services">What we do</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#community">Community</a></li>
+          <li><a href="#news">Latest News</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Connect</h4>
+        <ul>
+          <li><i class="fa-solid fa-envelope text-cyan"></i> hello@signaturepremierevents.in</li>
+          <li><i class="fa-solid fa-phone text-pink"></i> +91 999 555 LIVE</li>
+          <li><i class="fa-solid fa-location-dot text-gold"></i> Toronto · Vancouver · Montreal · Calgary</li>
+          <li><i class="fa-brands fa-whatsapp text-cyan"></i> WhatsApp Community</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Signature Premier Events. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
