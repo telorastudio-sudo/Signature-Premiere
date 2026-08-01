@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery | Signature Premier Events</title>
+  <meta name="description" content="Browse the full photo gallery from Signature Premier Events — relive the magic from our concerts, cultural festivals, dance competitions, and community celebrations across Canada.">
+  <meta name="keywords" content="Mallu events gallery, Signature Premier Events photos, Malayali events Canada, concert photos">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23030305'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='20' font-family='Arial' font-weight='bold' fill='%23ffd700'%3ES%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Gallery page-specific styles -->
+  <link rel="stylesheet" href="gallery-page.css">
+</head>
+<body>
+
+  <!-- MUSIC NOTES FLOATING PARTICLES -->
+  <div class="particle-container" id="particleContainer"></div>
+
+  <!-- AMBIENT AURORA BACKGROUND -->
+  <div class="aurora-container">
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="aurora aurora-3"></div>
+    <div class="aurora aurora-4"></div>
+  </div>
+
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="navbar">
+    <a href="index.html" class="logo-link">
+      <img src="images/logo.png" alt="Signature Events Logo" class="brand-logo" id="navLogo">
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html#about" class="hover-underline">About</a></li>
+      <li><a href="index.html#community" class="hover-underline">Community</a></li>
+      <li><a href="index.html#events" class="hover-underline">Events</a></li>
+      <li><a href="index.html#services" class="hover-underline">Experiences</a></li>
+      <li><a href="gallery.html" class="hover-underline" aria-current="page" style="color: var(--color-cyan);">Gallery</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="btn btn-glass" onclick="openContactModal()">
+        <i class="fa-solid fa-handshake"></i> Connect
+      </button>
+      <div class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Open navigation menu" role="button" tabindex="0">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-close" onclick="toggleMobileMenu()" aria-label="Close navigation menu" role="button" tabindex="0">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </div>
+    <ul>
+      <li><a href="index.html#about" onclick="toggleMobileMenu()">About</a></li>
+      <li><a href="index.html#community" onclick="toggleMobileMenu()">Community</a></li>
+      <li><a href="index.html#events" onclick="toggleMobileMenu()">Events</a></li>
+      <li><a href="index.html#services" onclick="toggleMobileMenu()">Experiences</a></li>
+      <li><a href="gallery.html" onclick="toggleMobileMenu()" style="color: var(--color-cyan);">Gallery</a></li>
+    </ul>
+    <div class="culture-tag">Rooted in Tradition — Thriving in Canada</div>
+  </div>
+
+  <!-- ==================== GALLERY HERO ==================== -->
+  <header class="gallery-hero" id="gallery-hero">
+    <div class="hero-overlay-pattern"></div>
+    <div class="gallery-hero-content">
+      <a href="index.html#gallery" class="gallery-back-link">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+      </a>
+      <div class="gallery-count-pill">
+        <i class="fa-solid fa-images"></i>
+        <span id="photoCountLabel">84 Photos</span>
+      </div>
+      <h1 class="title-outline">GALLERY</h1>
+      <h2 class="title-main">Moments <span class="text-gradient">Captured</span></h2>
+      <p class="subtitle">Relive the magic from our past events across Canada</p>
+    </div>
+  </header>
+
+  <!-- ==================== GALLERY GRID ==================== -->
+  <section class="gallery-page-section" id="gallery-grid-section">
+    <div class="container">
+
+      <!-- Masonry columns grid — items injected by JS -->
+      <div class="gallery-masonry" id="galleryMasonry" role="list" aria-label="Photo gallery"></div>
+
+      <!-- Infinite scroll sentinel -->
+      <div class="gallery-sentinel" id="gallerySentinel" aria-hidden="true"></div>
+
+      <!-- Loading indicator -->
+      <div class="gallery-loader" id="galleryLoader" aria-live="polite" aria-label="Loading more photos">
+        <div class="gallery-loader-ring"></div>
+        <span class="gallery-loader-text">Loading more photos…</span>
+      </div>
+
+      <!-- End of gallery message -->
+      <div class="gallery-end-message" id="galleryEndMessage" aria-live="polite">
+        ✦ All <span id="galleryTotalCount">84</span> photos loaded ✦
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== LIGHTBOX ==================== -->
+  <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox(event)" role="dialog" aria-modal="true" aria-label="Photo lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox"><i class="fa-solid fa-xmark"></i></button>
+    <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" aria-label="Previous photo"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="Next photo"><i class="fa-solid fa-chevron-right"></i></button>
+    <span class="lightbox-counter" id="lightboxCounter" aria-live="polite"></span>
+    <div class="lightbox-content">
+      <img id="lightboxImage" src="" alt="Gallery photo">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <!-- ==================== CONTACT MODAL (minimal) ==================== -->
+  <div class="modal-overlay" id="contactModalOverlay" onclick="closeContactModal(event)" role="dialog" aria-modal="true" aria-label="Contact form">
+    <div class="modal-content glass-panel">
+      <button class="modal-close" onclick="closeContactModal()" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-header">
+        <div class="modal-tag">Get In Touch</div>
+        <h3>Connect With Us</h3>
+        <p>Reach out via WhatsApp or email and our team will get back to you shortly.</p>
+      </div>
+      <div class="modal-body" style="display:flex;flex-direction:column;gap:14px;margin-top:24px;">
+        <a href="https://wa.me/17803947675" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width:100%;justify-content:center;">
+          <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+        <a href="mailto:Sigevents.ca@gmail.com" class="btn btn-glass" style="width:100%;justify-content:center;">
+          <i class="fa-solid fa-envelope"></i> Send an Email
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer id="contact">
+    <div class="footer-grid container">
+      <div class="footer-brand">
+        <a href="index.html" class="logo-link">
+          <img src="images/logo.png" alt="Signature Premier Events" class="brand-logo">
+        </a>
+        <p>Canada's premier event management and entertainment community — creating exceptional experiences for the Malayali diaspora from concerts and cultural festivals to dance competitions and award nights from coast to coast.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/signature_premier_events.inc?igsh=MThtcjRwZDU3NmR4Nw%3D%3D&utm_source=qr"
+             target="_blank" rel="noopener noreferrer" class="glass-icon" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/17803947675" target="_blank" rel="noopener noreferrer" class="glass-icon" aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a href="https://www.facebook.com/share/1DFVsWZ91C/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="glass-icon" aria-label="Facebook">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="index.html#events">Upcoming Events</a></li>
+          <li><a href="index.html#services">What we do</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="index.html#community">Community</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Connect</h4>
+        <ul>
+          <li>
+            <i class="fa-solid fa-envelope text-cyan"></i>
+            <a href="mailto:Sigevents.ca@gmail.com">Sigevents.ca@gmail.com</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-phone text-pink"></i>
+            <a href="tel:+17803947675">+1 780 394 7675</a>
+          </li>
+          <li>
+            <i class="fa-brands fa-whatsapp text-cyan"></i>
+            <a href="https://wa.me/17803947675" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Signature Premier Events. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script>
+    /* =========================================================================
+       GALLERY PAGE — Self-contained script
+       All gallery logic is here; no dependency on script.js
+       ========================================================================= */
+
+    // ── Photo data (all 84 real .webp files from gallery-final/) ──────────────
+    const GALLERY_PHOTOS = [
+      { src: 'gallery-final/DSC_1792_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1795_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1797_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1799_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1805_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1811_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1812_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1817_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1820_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1824_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1827_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1836_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1839_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1841_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1852_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1860_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1867_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1884_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1887_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1913_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1914_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1920_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1922_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1924_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1928_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1933_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1946_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1955_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1957_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1959_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1964_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1974_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1984_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1987_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1989_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1991_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_1994_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2011_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2017_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2022_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2025_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2026_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2029_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2032_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2035_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2037_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2054_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2056_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2058_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2061_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2069_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2075_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2076_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2078_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2085_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2090_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2113_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2120_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2126_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2138_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2150_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2154_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2156_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2157_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2224_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2232_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2234_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2235_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2238_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2257_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2270_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2271_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2272_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2306_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2356_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2360_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2361_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2374_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2377_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2385_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2388_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2394_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2398_result.webp', caption: 'Signature Premier Events' },
+      { src: 'gallery-final/DSC_2406_result.webp', caption: 'Signature Premier Events' },
+    ];
+
+    const BATCH_SIZE = 20;
+    let nextBatchStart = 0;
+    let isLoading = false;
+    let allLoaded = false;
+    let currentLightboxIndex = 0;
+
+    // Track which rendered items have been assigned DOM indices for lightbox
+    // (only items rendered so far are clickable)
+    let renderedCount = 0;
+
+    // ── DOM refs ───────────────────────────────────────────────────────────────
+    const galleryMasonry  = document.getElementById('galleryMasonry');
+    const gallerySentinel = document.getElementById('gallerySentinel');
+    const galleryLoader   = document.getElementById('galleryLoader');
+    const galleryEndMsg   = document.getElementById('galleryEndMessage');
+
+    // Update photo count labels
+    const total = GALLERY_PHOTOS.length;
+    document.getElementById('photoCountLabel').textContent  = total + ' Photos';
+    document.getElementById('galleryTotalCount').textContent = total;
+
+    // ── IntersectionObserver — item reveal animation ───────────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    // ── Render a batch of photos ───────────────────────────────────────────────
+    function renderBatch() {
+      if (isLoading || allLoaded) return;
+
+      isLoading = true;
+      galleryLoader.classList.add('visible');
+
+      // Small delay to allow the loader to render before heavy DOM work
+      requestAnimationFrame(() => {
+        const end = Math.min(nextBatchStart + BATCH_SIZE, GALLERY_PHOTOS.length);
+        const fragment = document.createDocumentFragment();
+
+        for (let i = nextBatchStart; i < end; i++) {
+          const photo = GALLERY_PHOTOS[i];
+          const idx   = i; // capture for closure
+
+          const item = document.createElement('div');
+          item.className = 'gallery-item';
+          item.setAttribute('role', 'listitem');
+          item.setAttribute('tabindex', '0');
+          item.setAttribute('aria-label', 'Photo ' + (idx + 1) + ' of ' + total);
+
+          const img = document.createElement('img');
+          img.src     = photo.src;
+          img.alt     = photo.caption + ' — photo ' + (idx + 1);
+          img.loading = 'lazy';
+          img.decoding = 'async';
+
+          const overlay = document.createElement('div');
+          overlay.className = 'gallery-overlay';
+          overlay.innerHTML = '<i class="fa-solid fa-expand" aria-hidden="true"></i><span>View Photo</span>';
+
+          item.appendChild(img);
+          item.appendChild(overlay);
+
+          // Click / keyboard open lightbox
+          item.addEventListener('click', () => openLightbox(idx));
+          item.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openLightbox(idx);
+            }
+          });
+
+          revealObserver.observe(item);
+          fragment.appendChild(item);
+        }
+
+        galleryMasonry.appendChild(fragment);
+        renderedCount = end;
+        nextBatchStart = end;
+
+        galleryLoader.classList.remove('visible');
+        isLoading = false;
+
+        if (nextBatchStart >= GALLERY_PHOTOS.length) {
+          allLoaded = true;
+          sentinelObserver.disconnect();
+          // Show end message after a short pause
+          setTimeout(() => {
+            galleryEndMsg.style.display = 'block';
+            requestAnimationFrame(() => galleryEndMsg.classList.add('visible'));
+          }, 400);
+        }
+      });
+    }
+
+    // ── IntersectionObserver — infinite scroll sentinel ────────────────────────
+    const sentinelObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !isLoading && !allLoaded) {
+        renderBatch();
+      }
+    }, { rootMargin: '0px 0px 400px 0px' });
+
+    sentinelObserver.observe(gallerySentinel);
+
+    // ── Initial batch (on DOM ready) ───────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      renderBatch();
+    });
+
+    // =========================================================================
+    // LIGHTBOX
+    // =========================================================================
+    function openLightbox(index) {
+      // Only allow opening if within rendered range
+      if (index < 0 || index >= renderedCount) return;
+
+      currentLightboxIndex = index;
+      updateLightboxDisplay();
+
+      const overlay = document.getElementById('lightboxOverlay');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      overlay.focus();
+
+      document.addEventListener('keydown', handleLightboxKey);
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target !== e.currentTarget && e.target.closest('.lightbox-content')) return;
+
+      const overlay = document.getElementById('lightboxOverlay');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleLightboxKey);
+    }
+
+    function navigateLightbox(direction) {
+      // Navigation wraps around only within rendered photos
+      const maxIdx = renderedCount - 1;
+      currentLightboxIndex += direction;
+      if (currentLightboxIndex < 0) currentLightboxIndex = maxIdx;
+      if (currentLightboxIndex > maxIdx) currentLightboxIndex = 0;
+      updateLightboxDisplay();
+    }
+
+    function updateLightboxDisplay() {
+      const photo   = GALLERY_PHOTOS[currentLightboxIndex];
+      const imgEl   = document.getElementById('lightboxImage');
+      const capEl   = document.getElementById('lightboxCaption');
+      const ctrEl   = document.getElementById('lightboxCounter');
+
+      // Fade-swap effect
+      imgEl.style.opacity = '0';
+      imgEl.style.transition = 'opacity 0.25s ease';
+
+      const newImg = new Image();
+      newImg.onload = () => {
+        imgEl.src = newImg.src;
+        imgEl.alt = photo.caption;
+        imgEl.style.opacity = '1';
+      };
+      newImg.src = photo.src;
+
+      if (capEl) capEl.textContent = photo.caption;
+      if (ctrEl) ctrEl.textContent = (currentLightboxIndex + 1) + ' / ' + renderedCount;
+    }
+
+    function handleLightboxKey(e) {
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowLeft')  navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    }
+
+    // Touch swipe support in lightbox
+    let touchStartX = 0;
+    const lightboxEl = document.getElementById('lightboxOverlay');
+    lightboxEl.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    lightboxEl.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) navigateLightbox(dx < 0 ? 1 : -1);
+    }, { passive: true });
+
+    // =========================================================================
+    // NAVIGATION — Scroll progress + navbar compact
+    // =========================================================================
+    const navbar    = document.getElementById('navbar');
+    const scrollBar = document.getElementById('scrollProgress');
+
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      scrollBar.style.width = (scrolled / max * 100) + '%';
+
+      if (scrolled > 60) navbar.classList.add('scrolled');
+      else               navbar.classList.remove('scrolled');
+
+      const btn = document.getElementById('scrollToTop');
+      if (btn) btn.style.opacity = scrolled > 400 ? '1' : '0';
+    }, { passive: true });
+
+    // =========================================================================
+    // MOBILE MENU
+    // =========================================================================
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+    }
+
+    // =========================================================================
+    // CONTACT MODAL (minimal — links to WhatsApp / email)
+    // =========================================================================
+    function openContactModal() {
+      const overlay = document.getElementById('contactModalOverlay');
+      if (overlay) {
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeContactModal(e) {
+      if (e && e.target !== e.currentTarget && e.target.closest('.modal-content')) return;
+      const overlay = document.getElementById('contactModalOverlay');
+      if (overlay) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeContactModal();
+      }
+    });
+
+    // =========================================================================
+    // FLOATING MUSIC PARTICLES (same as main site)
+    // =========================================================================
+    (function initParticles() {
+      const container = document.getElementById('particleContainer');
+      if (!container) return;
+      const notes = ['♩', '♪', '♫', '♬', '🎵', '🎶', '🎼'];
+
+      function spawnParticle() {
+        const el = document.createElement('span');
+        el.className = 'music-particle';
+        el.textContent = notes[Math.floor(Math.random() * notes.length)];
+        el.style.cssText = [
+          'left:' + (Math.random() * 100) + '%',
+          'animation-duration:' + (8 + Math.random() * 10) + 's',
+          'animation-delay:' + (Math.random() * 4) + 's',
+          'font-size:' + (0.9 + Math.random() * 0.8) + 'rem',
+          '--drift-x:' + ((Math.random() - 0.5) * 120) + 'px',
+          'opacity:0'
+        ].join(';');
+        container.appendChild(el);
+        const dur = (parseFloat(el.style.animationDuration) + parseFloat(el.style.animationDelay || 0)) * 1000;
+        setTimeout(() => el.remove(), dur + 500);
+      }
+
+      // Spawn 3 immediately, then every 1.8s
+      for (let i = 0; i < 3; i++) spawnParticle();
+      setInterval(spawnParticle, 1800);
+    })();
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,672 @@
+/* ==========================================================================
+   REGISTRATION PAGES — SHARED STYLESHEET
+   Used by: volunteer-registration.html, artist-registration.html,
+            sponsor-registration.html, emcee-application.html
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. BACK BUTTON
+   -------------------------------------------------------------------------- */
+.back-btn-wrap {
+  position: fixed;
+  top: 130px;
+  left: 5%;
+  z-index: 20;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-gray);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-light);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: var(--transition);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-back:hover {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateX(-3px);
+}
+
+.btn-back i {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-back:hover i {
+  transform: translateX(-3px);
+}
+
+/* --------------------------------------------------------------------------
+   2. REGISTRATION HERO
+   -------------------------------------------------------------------------- */
+.reg-hero {
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 150px 5% 80px;
+  overflow: hidden;
+}
+
+.reg-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(3, 3, 5, 0.7), rgba(3, 3, 5, 0.25));
+  z-index: 0;
+}
+
+.reg-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.reg-hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.reg-hero .tagline {
+  margin-bottom: 20px;
+}
+
+.reg-hero .hero-title {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.reg-hero .hero-desc {
+  font-size: 1.05rem;
+  color: var(--color-gray);
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   3. FORM SECTION
+   -------------------------------------------------------------------------- */
+.reg-form-section {
+  padding: 60px 0 100px;
+  position: relative;
+  z-index: 10;
+}
+
+.reg-form-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.reg-form-card {
+  padding: 48px;
+  border-radius: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   4. FORM SECTION HEADERS
+   -------------------------------------------------------------------------- */
+.form-section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.form-section-label i {
+  font-size: 1.2rem;
+  /* colour is set per-page via accent classes */
+}
+
+.form-section-label h3 {
+  font-size: 0.85rem;
+  letter-spacing: 2.5px;
+  color: var(--color-white);
+  text-transform: uppercase;
+  font-family: var(--font-display);
+  margin: 0;
+}
+
+.form-section-divider {
+  margin: 32px 0 0;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-light);
+}
+
+/* --------------------------------------------------------------------------
+   5. ACCENT COLOURS (applied to section icon and focus states)
+   -------------------------------------------------------------------------- */
+/* Cyan — Volunteer */
+.accent-cyan .form-section-label i { color: var(--color-cyan); }
+.accent-cyan .input-group input:focus,
+.accent-cyan .input-group textarea:focus { border-color: var(--color-cyan) !important; }
+.accent-cyan .input-group input:focus ~ label,
+.accent-cyan .input-group input:not(:placeholder-shown) ~ label,
+.accent-cyan .input-group textarea:focus ~ label,
+.accent-cyan .input-group textarea:not(:placeholder-shown) ~ label { color: var(--color-cyan) !important; }
+.accent-cyan .select-label { color: var(--color-cyan); }
+.accent-cyan .input-group select:focus { border-color: var(--color-cyan); }
+
+/* Gold — Artist */
+.accent-gold .form-section-label i { color: var(--color-gold); }
+.accent-gold .input-group input:focus,
+.accent-gold .input-group textarea:focus { border-color: var(--color-gold) !important; }
+.accent-gold .input-group input:focus ~ label,
+.accent-gold .input-group input:not(:placeholder-shown) ~ label,
+.accent-gold .input-group textarea:focus ~ label,
+.accent-gold .input-group textarea:not(:placeholder-shown) ~ label { color: var(--color-gold) !important; }
+.accent-gold .select-label { color: var(--color-gold); }
+.accent-gold .input-group select:focus { border-color: var(--color-gold); }
+
+/* Purple — Sponsor */
+.accent-purple .form-section-label i { color: var(--color-purple); }
+.accent-purple .input-group input:focus,
+.accent-purple .input-group textarea:focus { border-color: var(--color-purple) !important; }
+.accent-purple .input-group input:focus ~ label,
+.accent-purple .input-group input:not(:placeholder-shown) ~ label,
+.accent-purple .input-group textarea:focus ~ label,
+.accent-purple .input-group textarea:not(:placeholder-shown) ~ label { color: var(--color-purple) !important; }
+.accent-purple .select-label { color: var(--color-purple); }
+.accent-purple .input-group select:focus { border-color: var(--color-purple); }
+
+/* Pink — EMCEE */
+.accent-pink .form-section-label i { color: var(--color-pink); }
+.accent-pink .input-group input:focus,
+.accent-pink .input-group textarea:focus { border-color: var(--color-pink) !important; }
+.accent-pink .input-group input:focus ~ label,
+.accent-pink .input-group input:not(:placeholder-shown) ~ label,
+.accent-pink .input-group textarea:focus ~ label,
+.accent-pink .input-group textarea:not(:placeholder-shown) ~ label { color: var(--color-pink) !important; }
+.accent-pink .select-label { color: var(--color-pink); }
+.accent-pink .input-group select:focus { border-color: var(--color-pink); }
+
+/* --------------------------------------------------------------------------
+   6. SELECT ELEMENT
+   -------------------------------------------------------------------------- */
+.input-group select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-light);
+  padding: 16px 44px 16px 16px;
+  border-radius: 8px;
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+  transition: var(--transition);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a0a0ab' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+
+.input-group select option {
+  background: #141419;
+  color: var(--color-white);
+}
+
+.input-group select:focus {
+  background-color: rgba(255, 255, 255, 0.06);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2300f0ff' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+/* Floating label for select */
+.input-group .select-label {
+  position: absolute;
+  left: 16px;
+  top: -10px;
+  font-size: 0.75rem;
+  background: #141419;
+  padding: 0 6px;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   7. RADIO OPTIONS
+   -------------------------------------------------------------------------- */
+.radio-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.03);
+  transition: var(--transition);
+  flex: 1;
+  min-width: 120px;
+  user-select: none;
+}
+
+.radio-option:hover {
+  border-color: rgba(0, 240, 255, 0.3);
+  background: rgba(0, 240, 255, 0.04);
+}
+
+.radio-option input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border-light);
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.radio-option input[type="radio"]::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-cyan);
+  transition: var(--transition);
+}
+
+.radio-option input[type="radio"]:checked {
+  border-color: var(--color-cyan);
+}
+
+.radio-option input[type="radio"]:checked::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-option:has(input:checked) {
+  border-color: rgba(0, 240, 255, 0.4);
+  background: rgba(0, 240, 255, 0.06);
+}
+
+.radio-option span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-gray);
+  transition: var(--transition);
+}
+
+.radio-option:has(input:checked) span {
+  color: var(--color-white);
+}
+
+/* --------------------------------------------------------------------------
+   8. CHECKBOX OPTIONS
+   -------------------------------------------------------------------------- */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.checkbox-group.inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.03);
+  transition: var(--transition);
+  user-select: none;
+}
+
+.checkbox-option.inline-item {
+  flex: 0 0 auto;
+}
+
+.checkbox-option:hover {
+  border-color: rgba(0, 240, 255, 0.3);
+  background: rgba(0, 240, 255, 0.04);
+}
+
+.checkbox-option input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid var(--border-light);
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+  position: relative;
+  margin-top: 1px;
+}
+
+.checkbox-option input[type="checkbox"]::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0) rotate(45deg);
+  width: 5px;
+  height: 9px;
+  border-right: 2px solid var(--color-white);
+  border-bottom: 2px solid var(--color-white);
+  transition: var(--transition);
+}
+
+.checkbox-option input[type="checkbox"]:checked {
+  background: var(--color-cyan);
+  border-color: var(--color-cyan);
+}
+
+.checkbox-option input[type="checkbox"]:checked::after {
+  transform: translate(-50%, -56%) scale(1) rotate(45deg);
+}
+
+.checkbox-option:has(input:checked) {
+  border-color: rgba(0, 240, 255, 0.4);
+  background: rgba(0, 240, 255, 0.06);
+}
+
+.checkbox-option span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-gray);
+  transition: var(--transition);
+  line-height: 1.5;
+}
+
+.checkbox-option:has(input:checked) span {
+  color: var(--color-white);
+}
+
+/* --------------------------------------------------------------------------
+   9. FIELD LABELS & HELPERS
+   -------------------------------------------------------------------------- */
+.radio-label,
+.field-group-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-gray);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.field-required {
+  color: var(--color-pink);
+}
+
+/* --------------------------------------------------------------------------
+   10. FORM LAYOUT
+   -------------------------------------------------------------------------- */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.mb-20 { margin-bottom: 20px; }
+.mb-24 { margin-bottom: 24px; }
+.mb-32 { margin-bottom: 32px; }
+
+/* --------------------------------------------------------------------------
+   11. VIDEO SUBMISSION BOX
+   -------------------------------------------------------------------------- */
+.video-instruction-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+
+.video-instruction-box p {
+  font-size: 0.9rem;
+  color: var(--color-gray);
+  margin-bottom: 14px;
+}
+
+.video-instruction-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.video-instruction-box ul li {
+  font-size: 0.85rem;
+  color: var(--color-gray);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+
+.video-instruction-box ul li::before {
+  content: '✦';
+  color: var(--color-pink);
+  font-size: 0.65rem;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   12. DECLARATION / CONSENT SECTION
+   -------------------------------------------------------------------------- */
+.declaration-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 28px;
+}
+
+/* --------------------------------------------------------------------------
+   13. RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .back-btn-wrap {
+    top: 80px;
+    left: 4%;
+  }
+
+  .reg-hero {
+    padding: 130px 5% 60px;
+  }
+
+  .reg-form-card {
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .radio-group {
+    flex-direction: column;
+  }
+
+  .radio-option {
+    min-width: unset;
+    flex: unset;
+  }
+
+  .checkbox-group.inline {
+    flex-direction: column;
+  }
+
+  .reg-hero .hero-title {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   14. PLACEHOLDER COLOUR
+   -------------------------------------------------------------------------- */
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: transparent; /* Hidden by default — floating label handles this */
+}
+
+/* --------------------------------------------------------------------------
+   15. TEXTAREA RESIZE
+   -------------------------------------------------------------------------- */
+.input-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* --------------------------------------------------------------------------
+   16. FOCUS-VISIBLE KEYBOARD ACCESSIBILITY
+   -------------------------------------------------------------------------- */
+.radio-option:focus-within {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.checkbox-option:focus-within {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.btn-back:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 3px;
+}
+
+.input-group input:focus-visible,
+.input-group textarea:focus-visible,
+.input-group select:focus-visible {
+  outline: none; /* Border colour handled by accent classes */
+}
+
+/* --------------------------------------------------------------------------
+   17. SUCCESS STATE FOR SUBMIT BUTTON
+   -------------------------------------------------------------------------- */
+.btn.submitted {
+  background: var(--color-cyan) !important;
+  color: var(--bg-dark) !important;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   18. VALIDATION ERROR STATES
+   -------------------------------------------------------------------------- */
+
+/* Invalid text / email / tel / number / url / textarea */
+.input-group.field-error > input,
+.input-group.field-error > textarea,
+.input-group.field-error > select {
+  border-color: var(--color-pink) !important;
+  background: rgba(255, 0, 85, 0.04);
+}
+
+/* Floating label turns red when field is invalid */
+.input-group.field-error > label,
+.input-group.field-error > .select-label {
+  color: var(--color-pink) !important;
+}
+
+/* Radio group container highlight when nothing selected */
+.radio-group.field-error {
+  border-radius: 8px;
+  outline: 1px solid rgba(255, 0, 85, 0.35);
+  outline-offset: 2px;
+}
+
+/* Checkbox group container highlight */
+.checkbox-group.field-error {
+  border-radius: 8px;
+  outline: 1px solid rgba(255, 0, 85, 0.35);
+  outline-offset: 2px;
+}
+
+/* Declaration box highlight */
+.declaration-box.field-error {
+  border-color: rgba(255, 0, 85, 0.5) !important;
+  background: rgba(255, 0, 85, 0.04) !important;
+}
+
+/* --------------------------------------------------------------------------
+   19. INLINE ERROR MESSAGE
+   -------------------------------------------------------------------------- */
+.error-msg {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-pink);
+  margin-top: 6px;
+  padding-left: 2px;
+  letter-spacing: 0.2px;
+  animation: errorFadeIn 0.2s ease;
+}
+
+@keyframes errorFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Error message placed after a radio-group sits on the wrapping div */
+div > .error-msg {
+  margin-top: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   20. SHAKE ANIMATION (triggered by JS when form has errors)
+   -------------------------------------------------------------------------- */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+.form-shake {
+  animation: shake 0.4s ease;
+}
+
+
