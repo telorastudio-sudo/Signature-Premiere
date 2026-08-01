@@ -260,6 +260,7 @@ h5 {
 
 .text-gradient {
   background: linear-gradient(to right, var(--color-cyan), var(--color-pink), var(--color-purple));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% auto;
@@ -1400,6 +1401,7 @@ section {
   line-height: 1;
   background: linear-gradient(to bottom, var(--color-white), var(--color-gold));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
