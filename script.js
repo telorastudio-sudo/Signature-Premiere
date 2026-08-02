@@ -412,11 +412,11 @@ function stopTestimonialAuto() {
 // 12. LIGHTBOX GALLERY
 // =========================================================================
 const galleryImages = [
-  { src: 'images/gal1.webp', caption: 'Concert Night — Toronto' },
-  { src: 'images/gal2.webp', caption: 'Live Performance — Mississauga' },
-  { src: 'images/gal3.webp', caption: 'Cultural Festival — Vancouver' },
-  { src: 'images/gal4.webp', caption: 'Concert Crowd — Toronto' },
-  { src: 'images/gal5.webp', caption: 'Stage Show — Montreal' },
+  { src: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80', caption: 'Whistle Podu — Edmonton' },
+  { src: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80', caption: 'Live Performance — Mississauga' },
+  { src: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80', caption: 'Cultural Festival — Vancouver' },
+  { src: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80', caption: 'Concert Crowd — Toronto' },
+  { src: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80', caption: 'Stage Show — Montreal' },
 ];
 
 let currentLightboxIndex = 0;
